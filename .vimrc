@@ -4,7 +4,7 @@ filetype indent plugin on
 " Enable mouse for all Vim modes "
 
 " To disable a plugin, add it's bundle name to the following list
-let g:pathogen_disabled = ['ale']
+ let g:pathogen_disabled = ['ale']
 execute pathogen#infect()
 
 "unwanted whitespaces"
@@ -43,7 +43,7 @@ set cindent
 "set tags=/tmp/ctags
 "let g:gutentags_cache_dir="/tmp/.ctags"
 
-set clipboard+=unnamedplus
+set clipboard^=unnamedplus
 
 " \d and \D will just delete text, without copying to register
 :noremap <Leader>d "_d
@@ -82,7 +82,12 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#fnamemod = ':t'
 " hi StatusLine term=reverse cterm=reverse ctermfg=14 ctermbg=0 gui=bold,reverse
 " au InsertEnter * hi StatusLine term=reverse cterm=reverse ctermfg=31 ctermbg=0 gui=bold,reverse
 " au InsertLeave * hi StatusLine term=reverse cterm=reverse ctermfg=14 ctermbg=0 gui=bold,reverse
@@ -101,8 +106,10 @@ set laststatus=2
 :set tabstop=4 shiftwidth=4 expandtab
 "au FileType c setl ofu=ccomplete#CompleteCpp
 
-let g:ale_linters = {'c': ['gcc'], 'python' : ['pylint'], }
-"let g:ale_c_gcc_options='-std=gnu99 -Wall -DMEMKIND_INTERNAL_API -D_GNU_SOURCE -msse4.2'
+let g:ale_linters = {'c': ['gcc'], 'cpp': ['clang'], 'python' : ['pylint'], }
+" let g:ale_c_gcc_options="-std=c++11"
+" let g:ale_cpp_gcc_options="-std=c++11"
+let g:ale_cpp_clang_options= "-std=c++11 -I/home/parallels/nervana/syssw/umd/export -I/home/parallels/nervana/syssw/**"
 
 " jump to the last position when reopening a file
 if has("autocmd")

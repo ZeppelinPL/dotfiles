@@ -4,3 +4,4 @@ export LS_COLORS="rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5
 
 alias ls='ls --color'
 alias grep='grep --color'
+bind '"\C-x\C-f":  edit-and-execute-command'
